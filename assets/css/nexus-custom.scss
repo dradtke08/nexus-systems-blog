@@ -1,0 +1,418 @@
+---
+---
+
+/*
+ * Nexus Systems Custom Branding
+ * Overrides Chirpy theme defaults with Nexus brand identity
+ * Typography: Roboto font family
+ * Colors: Navy Blue primary, Secondary Blue accents
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Roboto+Mono:wght@400;500;700&display=swap');
+
+/* ============================================
+   NEXUS SYSTEMS COLOR PALETTE
+   ============================================ */
+:root {
+  /* Primary Brand Colors */
+  --nexus-navy: #002060;
+  --nexus-blue: #4472C4;
+  --nexus-dark-blue: #1E3A8A;
+  --nexus-bright-blue: #3B82F6;
+  --nexus-cyan: #06B6D4;
+  --nexus-purple: #A855F7;
+  --nexus-red: #C00000;
+  
+  /* Grayscale */
+  --nexus-black: #000000;
+  --nexus-dark-gray: #282828;
+  --nexus-medium-gray: #505050;
+  --nexus-light-gray: #646464;
+  --nexus-very-light-gray: #808080;
+  
+  /* Override Chirpy Theme Colors */
+  --heading-color: var(--nexus-navy);
+  --label-color: var(--nexus-blue);
+  --link-color: var(--nexus-bright-blue);
+  --link-hover-color: var(--nexus-cyan);
+  --btn-backtotop-color: var(--nexus-navy);
+  --btn-backtotop-border-color: var(--nexus-blue);
+  --sidebar-bg: var(--nexus-dark-gray);
+  --topbar-text-color: var(--nexus-very-light-gray);
+  
+  /* Code Highlighting */
+  --highlight-bg-color: #1e1e1e;
+  --inline-code-bg: var(--nexus-dark-gray);
+}
+
+/* Dark Mode Adjustments */
+[data-mode="dark"] {
+  --heading-color: var(--nexus-bright-blue);
+  --card-bg: #1a1a1a;
+  --card-border-color: var(--nexus-dark-gray);
+}
+
+/* ============================================
+   TYPOGRAPHY - ROBOTO FONT FAMILY
+   ============================================ */
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 26pt;
+  font-weight: 300; /* Roboto Light */
+  color: var(--nexus-navy);
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: 700; /* Roboto Bold */
+  color: var(--nexus-navy);
+  border-bottom: 2px solid var(--nexus-blue);
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--nexus-blue);
+}
+
+h4 {
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--nexus-dark-gray);
+}
+
+h5 {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--nexus-medium-gray);
+}
+
+/* Code Blocks */
+code, pre {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 10pt;
+}
+
+pre {
+  background-color: var(--highlight-bg-color);
+  border-left: 3px solid var(--nexus-blue);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+code {
+  background-color: var(--inline-code-bg);
+  color: var(--nexus-bright-blue);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--nexus-blue);
+  background-color: rgba(68, 114, 196, 0.05);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: var(--nexus-medium-gray);
+}
+
+/* ============================================
+   NEXUS SYSTEMS BRANDING ELEMENTS
+   ============================================ */
+
+/* Site Title */
+.site-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--nexus-navy);
+}
+
+/* Site Tagline */
+.site-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--nexus-medium-gray);
+}
+
+/* Logo/Avatar Styling - Resize for sidebar */
+.sidebar-logo {
+  max-width: 150px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Chirpy theme avatar - make it smaller to fit sidebar */
+#sidebar .avatar {
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--nexus-blue);
+  box-shadow: 0 4px 12px rgba(0, 32, 96, 0.3);
+}
+
+/* Avatar container */
+#sidebar .profile-wrapper {
+  margin-top: 1rem;
+}
+
+/* Site title below avatar */
+#sidebar .site-title {
+  font-size: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+/* Site subtitle/tagline */
+#sidebar .site-subtitle {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* ============================================
+   NAVIGATION & SIDEBAR
+   ============================================ */
+#sidebar {
+  background: linear-gradient(135deg, var(--nexus-navy) 0%, var(--nexus-dark-blue) 100%);
+}
+
+.sidebar-bottom {
+  border-top: 1px solid var(--nexus-blue);
+}
+
+/* Navigation Links */
+.nav-link {
+  color: var(--nexus-very-light-gray) !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--nexus-cyan) !important;
+  transform: translateX(5px);
+}
+
+.nav-link.active {
+  color: var(--nexus-bright-blue) !important;
+  font-weight: 700;
+}
+
+/* ============================================
+   POSTS & CONTENT
+   ============================================ */
+
+/* Post Meta Information */
+.post-meta {
+  color: var(--nexus-medium-gray);
+  font-size: 0.875rem;
+}
+
+/* Post Tags */
+.post-tag {
+  background-color: var(--nexus-blue);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.post-tag:hover {
+  background-color: var(--nexus-bright-blue);
+  transform: scale(1.05);
+}
+
+/* Category Badges */
+.categories a {
+  background: linear-gradient(135deg, var(--nexus-blue), var(--nexus-purple));
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.categories a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(68, 114, 196, 0.3);
+}
+
+/* ============================================
+   BUTTONS & CALL-TO-ACTIONS
+   ============================================ */
+.btn-primary {
+  background-color: var(--nexus-red);
+  border-color: var(--nexus-red);
+  color: white;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #a00000;
+  border-color: #a00000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(192, 0, 0, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--nexus-blue);
+  border-color: var(--nexus-blue);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--nexus-bright-blue);
+  border-color: var(--nexus-bright-blue);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+#footer {
+  background-color: var(--nexus-dark-gray);
+  border-top: 2px solid var(--nexus-blue);
+  padding: 2rem 0;
+}
+
+.footer-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 9pt;
+  color: var(--nexus-very-light-gray);
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+th {
+  background-color: var(--nexus-navy);
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+td {
+  border: 1px solid var(--nexus-light-gray);
+  padding: 0.75rem;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(68, 114, 196, 0.05);
+}
+
+/* ============================================
+   ALERTS & NOTICES
+   ============================================ */
+.alert-warning {
+  border-left: 4px solid var(--nexus-red);
+  background-color: rgba(192, 0, 0, 0.05);
+  color: var(--nexus-red);
+  font-weight: 700;
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+#search-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--nexus-blue);
+  color: white;
+}
+
+#search-input:focus {
+  border-color: var(--nexus-cyan);
+  box-shadow: 0 0 0 0.2rem rgba(6, 182, 212, 0.25);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 22pt;
+  }
+  
+  h2 {
+    font-size: 16pt;
+  }
+  
+  h3 {
+    font-size: 13pt;
+  }
+  
+  .sidebar-logo {
+    max-width: 100px;
+  }
+}
+
+/* ============================================
+   CUSTOM NEXUS UTILITIES
+   ============================================ */
+
+/* Gradient Text (for special headings) */
+.gradient-text {
+  background: linear-gradient(135deg, var(--nexus-blue), var(--nexus-purple), var(--nexus-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Feature Box */
+.feature-box {
+  border: 2px solid var(--nexus-blue);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background: linear-gradient(135deg, rgba(0, 32, 96, 0.03), rgba(68, 114, 196, 0.03));
+}
+
+.feature-box h3 {
+  color: var(--nexus-bright-blue);
+  margin-top: 0;
+}
+
+/* Highlight Badge */
+.highlight-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--nexus-cyan), var(--nexus-bright-blue));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Animation on Hover */
+.sidebar-logo:hover {
+  transform: scale(1.05) rotate(2deg);
+  transition: transform 0.3s ease;
+}

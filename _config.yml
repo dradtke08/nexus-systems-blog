@@ -1,0 +1,157 @@
+# Nexus Systems Blog Configuration
+# Jekyll + Chirpy Theme with Custom Nexus Systems Branding
+
+# Site Settings
+title: Nexus Systems Blog
+tagline: Engineering Excellence. Governed for Innovation.
+description: >-
+  AI-native insights for modern software development. 
+  Exploring automation, intelligent systems, and innovative solutions 
+  for consumers, small business, and enterprise.
+
+url: "https://blog.nexus-systems.io"
+baseurl: ""
+
+# Author Information
+author:
+  name: David Radtke
+  email: admin@nexus-systems.io
+  bio: >-
+    CEO & Founder of Nexus Systems. Building AI-native software development 
+    products with capital efficiency and intelligent automation.
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/dradtke08"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/your-profile"
+    - label: "Company Site"
+      icon: "fas fa-fw fa-link"
+      url: "https://nexus-systems.io"
+
+# Social Media
+social:
+  name: Nexus Systems
+  email: admin@nexus-systems.io
+  links:
+    - https://github.com/dradtke08/Nexus-Systems
+    - https://linkedin.com/company/nexus-systems
+
+# Site Verification (add later)
+google_site_verification: # Google Search Console
+bing_site_verification: # Bing Webmaster
+
+# Analytics (add later)
+google_analytics:
+  id: # GA4 ID
+
+# Theme Settings
+theme: jekyll-theme-chirpy
+skin: dark # Matches Nexus Systems tech-forward aesthetic
+
+# Appearance
+avatar: /assets/img/nexus-logo.png # Nexus Systems logo
+
+# TOC Settings
+toc: true
+
+# Comments (optional - can enable later)
+comments:
+  active: # giscus, disqus, utterances, etc.
+
+# SEO & Social Sharing
+twitter:
+  username: # Your Twitter handle
+  card: summary_large_image
+
+# PWA Settings (optional)
+pwa:
+  enabled: true
+  app_name: Nexus Systems Blog
+  theme_color: "#002060" # Nexus Primary Navy
+  mask_icon: /assets/img/maskable-icon.png
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+# Pagination
+paginate: 10
+paginate_path: "/page:num/"
+
+# Collections
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-archives
+
+# Archives
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
+
+# Exclude from processing
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - tools
+  - README.md
+  - LICENSE
+  - rollup.config.js
+  - node_modules
+  - package*.json
+  - vendor
+
+# Timezone
+timezone: America/Los_Angeles
+
+# Nexus Systems Custom Settings
+nexus:
+  company_name: "Nexus Systems"
+  tagline: "Engineering Excellence. Governed for Innovation."
+  copyright: "© 2025 Nexus Systems. All Rights Reserved."
+  primary_color: "#002060"
+  secondary_color: "#4472C4"
+  accent_color: "#C00000"
