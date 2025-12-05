@@ -1,6 +1,9 @@
 ---
 ---
 
+/* prettier-ignore */
+@use 'main';
+
 /*
  * Nexus Systems Custom Branding
  * Overrides Chirpy theme defaults with Nexus brand identity
@@ -46,10 +49,82 @@
 }
 
 /* Dark Mode Adjustments */
-[data-mode="dark"] {
+html[data-mode="dark"] {
   --heading-color: var(--nexus-bright-blue);
   --card-bg: #1a1a1a;
   --card-border-color: var(--nexus-dark-gray);
+}
+
+/* Dark mode specific text colors */
+html[data-mode="dark"] h1,
+html[data-mode="dark"] h2,
+html[data-mode="dark"] h3,
+html[data-mode="dark"] h4,
+html[data-mode="dark"] h5,
+html[data-mode="dark"] h6,
+html[data-mode="dark"] .card-title,
+html[data-mode="dark"] article h1 {
+  color: #e0e0e0 !important; /* Light gray for readability on dark background */
+}
+
+html[data-mode="dark"] h1,
+html[data-mode="dark"] .card-title {
+  color: var(--nexus-cyan) !important; /* Cyan for main titles */
+}
+
+html[data-mode="dark"] h2 {
+  color: var(--nexus-bright-blue) !important; /* Bright blue for h2 */
+  border-bottom-color: var(--nexus-blue) !important;
+}
+
+html[data-mode="dark"] h3 {
+  color: var(--nexus-cyan) !important;
+}
+
+html[data-mode="dark"] .content,
+html[data-mode="dark"] .post-content,
+html[data-mode="dark"] article p {
+  color: #d0d0d0 !important;
+}
+
+/* System-level dark mode preference (when no data-mode attribute is set) */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]) {
+    --heading-color: var(--nexus-bright-blue);
+    --card-bg: #1a1a1a;
+    --card-border-color: var(--nexus-dark-gray);
+  }
+
+  html:not([data-mode]) h1,
+  html:not([data-mode]) h2,
+  html:not([data-mode]) h3,
+  html:not([data-mode]) h4,
+  html:not([data-mode]) h5,
+  html:not([data-mode]) h6,
+  html:not([data-mode]) .card-title,
+  html:not([data-mode]) article h1 {
+    color: #e0e0e0 !important;
+  }
+
+  html:not([data-mode]) h1,
+  html:not([data-mode]) .card-title {
+    color: var(--nexus-cyan) !important;
+  }
+
+  html:not([data-mode]) h2 {
+    color: var(--nexus-bright-blue) !important;
+    border-bottom-color: var(--nexus-blue) !important;
+  }
+
+  html:not([data-mode]) h3 {
+    color: var(--nexus-cyan) !important;
+  }
+
+  html:not([data-mode]) .content,
+  html:not([data-mode]) .post-content,
+  html:not([data-mode]) article p {
+    color: #d0d0d0 !important;
+  }
 }
 
 /* ============================================
@@ -150,8 +225,9 @@ blockquote {
   font-family: 'Roboto', sans-serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nexus-medium-gray);
+  line-height: 1.4;
 }
 
 /* Logo/Avatar Styling - Resize for sidebar */
@@ -161,15 +237,173 @@ blockquote {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-/* Chirpy theme avatar - make it smaller to fit sidebar */
+/* Chirpy theme avatar - square/rounded shape for full logo display */
+/* Disable click-to-enlarge behavior */
 #sidebar .avatar {
-  width: 100px !important;
-  height: 100px !important;
-  max-width: 100px !important;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--nexus-blue);
-  box-shadow: 0 4px 12px rgba(0, 32, 96, 0.3);
+  width: 120px !important;
+  height: 120px !important;
+  max-width: 120px !important;
+  border-radius: 8px !important; /* Square with rounded corners instead of circle */
+  object-fit: contain;
+  border: 2px solid var(--nexus-bright-blue);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+  pointer-events: none; /* Disable click enlargement */
+  cursor: default;
+}
+
+/* Prevent avatar link from triggering image viewer */
+#avatar {
+  pointer-events: auto !important;
+  cursor: pointer;
+  border-radius: 8px !important; /* Override Bootstrap rounded-circle */
+}
+
+#avatar img,
+#avatar.rounded-circle img,
+#sidebar #avatar img {
+  pointer-events: none;
+  border-radius: 8px !important; /* Override Bootstrap rounded-circle */
+  width: 120px !important;
+  height: auto !important;
+  max-height: 120px !important;
+  object-fit: contain !important;
+  background-color: transparent !important;
+}
+
+/* Override Bootstrap's rounded-circle class on avatar */
+#avatar.rounded-circle {
+  border-radius: 8px !important;
+}
+
+/* Disable image zoom/expand on post card previews */
+#post-list .post-preview {
+  pointer-events: auto;
+}
+
+/* Vertically center preview image in post cards */
+#post-list .post-preview.row {
+  align-items: center !important;
+}
+
+#post-list .preview-img,
+#post-list .col-md-5 {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+}
+
+#post-list .preview-img img {
+  object-fit: contain !important;
+  margin: auto !important;
+}
+
+/* Post card styling and hover effects */
+#post-list .card,
+#post-list .card-wrapper {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#post-list .card:hover,
+#post-list .card-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Post card dark mode backgrounds */
+html[data-mode="dark"] #post-list .card,
+html[data-mode="dark"] #post-list .card-wrapper {
+  background-color: #2d2d2d !important;
+}
+
+html[data-mode="dark"] #post-list .card:hover,
+html[data-mode="dark"] #post-list .card-wrapper:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* System-level dark mode for post cards */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]) #post-list .card,
+  html:not([data-mode]) #post-list .card-wrapper {
+    background-color: #2d2d2d !important;
+  }
+
+  html:not([data-mode]) #post-list .card:hover,
+  html:not([data-mode]) #post-list .card-wrapper:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Preview image container - transparent background, image has its own white bg */
+#post-list .preview-img,
+#post-list .preview-img.shimmer {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  padding: 15px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  aspect-ratio: auto !important;
+  height: auto !important;
+}
+
+/* Scale image to fit within the preview container */
+#post-list .preview-img img {
+  max-width: 100% !important;
+  max-height: 220px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 8px !important;
+}
+
+/* Disable all transforms, zooms, and expansions on preview images */
+#post-list .preview-img,
+#post-list .shimmer,
+#post-list .preview-img img,
+#post-list img {
+  transform: none !important;
+  transition: none !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+#post-list .preview-img:hover,
+#post-list .preview-img:focus,
+#post-list .preview-img:active,
+#post-list .shimmer:hover,
+#post-list .shimmer:focus,
+#post-list .shimmer:active,
+#post-list img:hover,
+#post-list img:focus,
+#post-list img:active {
+  transform: none !important;
+  scale: 1 !important;
+  zoom: 1 !important;
+}
+
+/* Disable fullscreen/expanded states */
+#post-list .preview-img.expanded,
+#post-list .shimmer.expanded,
+#post-list .preview-img[data-expanded],
+#post-list .shimmer[data-expanded] {
+  position: relative !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  transform: none !important;
+  z-index: auto !important;
+}
+
+/* Ensure text/content area remains clickable */
+#post-list .card-body,
+#post-list .col-md-7 {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 /* Avatar container */
@@ -181,12 +415,22 @@ blockquote {
 #sidebar .site-title {
   font-size: 1.25rem;
   margin-top: 0.75rem;
+  color: var(--nexus-bright-blue) !important; /* Light blue for visibility on dark bg */
+}
+
+#sidebar .site-title a {
+  color: var(--nexus-bright-blue) !important;
+}
+
+#sidebar .site-title a:hover {
+  color: var(--nexus-cyan) !important;
 }
 
 /* Site subtitle/tagline */
 #sidebar .site-subtitle {
   font-size: 0.8rem;
-  opacity: 0.9;
+  opacity: 1;
+  color: #b0b8c4 !important; /* Light gray-blue for visibility */
 }
 
 /* ============================================
@@ -194,6 +438,19 @@ blockquote {
    ============================================ */
 #sidebar {
   background: linear-gradient(135deg, var(--nexus-navy) 0%, var(--nexus-dark-blue) 100%);
+  align-items: flex-start !important; /* Left-align content instead of right */
+}
+
+/* Left-align profile section in mobile/tablet view */
+#sidebar .profile-wrapper {
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding-left: 1rem;
+}
+
+#sidebar .profile-wrapper #avatar {
+  margin-left: 0 !important;
+  margin-right: auto !important;
 }
 
 .sidebar-bottom {
@@ -351,6 +608,44 @@ tr:nth-child(even) {
   box-shadow: 0 0 0 0.2rem rgba(6, 182, 212, 0.25);
 }
 
+/* Fix search container styling - remove double border effect */
+#search {
+  border: none !important;
+  background: transparent !important;
+}
+
+#search .form-control,
+#topbar #search-input {
+  border-radius: 8px !important;
+  border: 1px solid rgba(68, 114, 196, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search .form-control:focus,
+#topbar #search-input:focus {
+  border-color: var(--nexus-bright-blue) !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+  outline: none !important;
+}
+
+html[data-mode="dark"] #search .form-control,
+html[data-mode="dark"] #topbar #search-input {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(68, 114, 196, 0.3) !important;
+  color: #e0e0e0 !important;
+}
+
+/* System-level dark mode for search */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]) #search .form-control,
+  html:not([data-mode]) #topbar #search-input {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(68, 114, 196, 0.3) !important;
+    color: #e0e0e0 !important;
+  }
+}
+
 /* ============================================
    RESPONSIVE ADJUSTMENTS
    ============================================ */
@@ -415,4 +710,114 @@ tr:nth-child(even) {
 .sidebar-logo:hover {
   transform: scale(1.05) rotate(2deg);
   transition: transform 0.3s ease;
+}
+
+/* ============================================
+   POST FEATURED IMAGE - PRESERVE ASPECT RATIO & LEFT ALIGN
+   ============================================ */
+/* Featured image on post pages - preserve aspect ratio */
+article .preview-img img,
+article .img-link img,
+.post-meta .preview-img img,
+.content img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Style the featured image container to look intentional on dark mode */
+html[data-mode="dark"] .post-meta a.preview-img img,
+html[data-mode="dark"] article .preview-img img {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Style images with white backgrounds on dark mode pages (About, etc.) */
+html[data-mode="dark"] .content img,
+html[data-mode="dark"] article .content img,
+html[data-mode="dark"] main img,
+html[data-mode="dark"] img.shadow,
+html[data-mode="dark"] a.popup img,
+html[data-mode="dark"] a.img-link img {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Also handle system-level dark mode preference */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]) .content img,
+  html:not([data-mode]) article .content img,
+  html:not([data-mode]) main img,
+  html:not([data-mode]) img.shadow,
+  html:not([data-mode]) a.popup img,
+  html:not([data-mode]) a.img-link img {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Force left alignment on post page featured image section */
+article header .post-meta .mt-3.mb-3,
+article .post-meta .mt-3.mb-3,
+.post-meta.text-muted .mt-3.mb-3,
+.post-meta.text-muted > .mt-3.mb-3 {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+/* The anchor wrapper for featured image */
+article header .post-meta a.popup.img-link.preview-img.shimmer,
+article .post-meta a.preview-img,
+.post-meta.text-muted a.popup.img-link.preview-img.shimmer {
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Left-align the image itself */
+article header .post-meta a.preview-img img,
+.post-meta.text-muted a.preview-img img {
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Left-align figcaption - override Bootstrap text-center with high specificity */
+article header .post-meta figcaption.text-center.pt-2.pb-2,
+article .post-meta figcaption.text-center.pt-2.pb-2,
+.post-meta.text-muted figcaption.text-center.pt-2.pb-2,
+.post-meta.text-muted > .mt-3.mb-3 > figcaption.text-center {
+  text-align: left !important;
+}
+
+/* ============================================
+   GLIGHTBOX POPUP IMAGE STYLING (DARK MODE)
+   Style images when opened in lightbox/popup viewer
+   ============================================ */
+/* Target images inside GLightbox popup - manual dark mode toggle */
+html[data-mode="dark"] .glightbox-container .gslide-image img,
+html[data-mode="dark"] .glightbox-container img.zoomable,
+html[data-mode="dark"] #glightbox-body img {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Target images inside GLightbox popup - system dark mode preference */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]) .glightbox-container .gslide-image img,
+  html:not([data-mode]) .glightbox-container img.zoomable,
+  html:not([data-mode]) #glightbox-body img,
+  /* Also target without html qualifier since lightbox may be at body level */
+  .glightbox-container .gslide-image img,
+  .glightbox-container img.zoomable,
+  #glightbox-body img {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
 }

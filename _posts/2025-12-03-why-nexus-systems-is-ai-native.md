@@ -1,12 +1,12 @@
 ---
 title: "Why Nexus Systems is AI-Native from Day One"
-date: 2024-12-03 09:00:00 -0800
+date: 2025-12-03 09:00:00 -0800
 categories: [Company Vision, AI Strategy]
 tags: [ai-native, automation, founding-philosophy, capital-efficiency, intelligent-systems]
 author: david
 pin: true
 image:
-  path: /assets/img/posts/2024-12-03-ai-native-vision.jpg
+  path: /assets/img/nexus-logo.png
   alt: Nexus Systems AI-Native Philosophy
 ---
 
@@ -311,5 +311,5 @@ At Nexus Systems, we're proving this model works. From solo founder to early gro
 
 ---
 
-**Document Control** | Nexus Systems Blog | Published: 2024-12-03  
+**Document Control** | Nexus Systems Blog | Published: 2025-12-03  
 **Author:** David Radtke, CEO & Founder | © 2025 Nexus Systems. All Rights Reserved.
