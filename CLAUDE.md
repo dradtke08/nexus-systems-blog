@@ -32,7 +32,7 @@ VSCode tasks are available: "Run Jekyll Server" and "Build Jekyll Site".
 - `_posts/` - Blog posts in Markdown with YAML front matter (format: `YYYY-MM-DD-slug-title.md`)
 - `_drafts/` - Unpublished draft posts
 - `_tabs/` - Navigation pages (About, Archives, Categories, Tags)
-- `_data/` - Configuration data (contact.yml, share.yml)
+- `_data/` - Configuration data (authors.yml, contact.yml, share.yml)
 
 ### Styling
 - `assets/css/jekyll-theme-chirpy.scss` - Complete custom Nexus branding overrides
@@ -51,13 +51,23 @@ title: "Post Title"
 date: YYYY-MM-DD HH:MM:SS -0800
 categories: [Category1, Category2]
 tags: [tag1, tag2]
-author: david_radtke
-pin: false              # Pin to top of homepage
-toc: true               # Table of contents
+author: david              # References _data/authors.yml
+pin: false                 # Pin to top of homepage
+toc: true                  # Table of contents
 image:
   path: /assets/img/posts/image.png
   alt: "Description"
 ---
+```
+
+## Authors Configuration
+
+Authors are defined in `_data/authors.yml`. When using `author: david` in post front matter, it looks up the author details from this file:
+
+```yaml
+david:
+  name: David Radtke
+  url: https://github.com/dradtke08
 ```
 
 ## CI/CD
@@ -123,6 +133,7 @@ html[data-mode="dark"] .your-selector {
 - `assets/css/jekyll-theme-chirpy.scss` - Main customization file (all CSS overrides)
 - `_tabs/about.md` - Changed to use cropped logo (`nexus-logo.png`) at width 200
 - `_posts/2025-12-03-why-nexus-systems-is-ai-native.md` - Changed featured image to `nexus-logo.png`
+- `_data/authors.yml` - Created to define author "david" for post bylines
 
 ## Completed Enhancements (December 2025 - Session 2)
 
@@ -135,8 +146,11 @@ html[data-mode="dark"] .your-selector {
 ## Future Enhancements (TODO)
 
 ### Content/UX
-- [ ] **Feature images** - Create unique article-specific featured images rather than using company logo for all posts
+- [ ] **Feature images** - Create proper banner-style hero images for posts (the logo creates large empty space on post pages)
 - [ ] **Light mode testing** - Verify light mode still looks good after dark mode changes
+
+### Known Issues
+- **Post page featured image** - When using the company logo as featured image, it displays small with large empty off-white space above the content. Consider using banner-style images or removing the featured image for posts that don't have a custom image.
 
 ## Troubleshooting
 
